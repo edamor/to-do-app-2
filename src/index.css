@@ -1,13 +1,351 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+body {
+  background-color: #f4f4f4;
+  font-family: 'Oswald', sans-serif;
+  padding-bottom: 20px;
+}
+
+
+/* General Style */
+
+.container {
+  width: 95%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.h6 {
+  font-size: 1.75rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.h5 {
+  font-size: 2.5rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.h4 {
+  font-size: 3.25rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.h3 {
+  font-size: 4rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.h2 {
+  font-size: 4.75rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.h1 {
+  font-size: 5.5rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+
+
+/* Container Style */
+
+.header-actions, .header-title, .task-title, .task-status {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
+.header-container {
+  border: 1px solid #000;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.header-title {
+  /* background-color: red; */
+  /* background-color: rgb(162, 157, 229); */
+  width: 70%;
+}
+
+.header-actions {
+  /* background-color: green; */
+  /* background-color: rgb(162, 157, 229); */
+  width: 30%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task-card-container {
+  /* background-color: rgb(162, 157, 229); */
+  height: 80px;
+  display: flex;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.task-title {
+  width: 70%;
+  height: auto;
+  align-self: center;
+}
+
+.task-title-text {
+  font-size: 1.2em;
+}
+
+.task-status {
+  width: 30%;
+  height: auto;
+  align-self: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.action-button-img {
+  width: 1.75em;
+  height: 1.75em;
+}
+
+.action-button {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.delete-button-img {
+  width: 1.75em;
+  height: 1.75em;
+}
+
+.delete-button {
+  cursor: pointer;
+}
+
+.add-button-wrap {
+  border: 1px solid #000;
+  border-radius: 10px;
+  align-content: center;
+  display: flex;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.add-button {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.add-button-img {
+  width: 2em;
+  height: 2em;
+  align-self: center;
+}
+
+.add-button-text {
+  font-size: 1.5em;
+  margin-right: 5px;
+}
+
+.header-action-text {
+  display: inline-block;
+  
+}
+
+
+/* Add Task Modal */
+
+.add-task-modal {
+  background-color: rgba(0,0,0, 0.6);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.add-task-modal-contents {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  width: 40%;
+  max-width: 1024px;
+  min-height: 250px;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  cursor: default;
+  border-radius: 8px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-top: 20px;
+}
+
+.add-task-modal-header {
+  margin-bottom: 14px;
+}
+
+.add-task-modal-body {
+  width: 100%;
+  text-align: center;
+}
+
+.add-task-modal-input {
+  width: 80%;
+  height: 40px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  border-radius: 7px;
+}
+
+.add-task-modal-submit {
+  justify-content: center;
+  display: flex;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.add-task-modal-submit-button {
+  padding: 10px;
+  width: 80%;
+  border: 1px solid #000;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.add-task-modal-back {
+  justify-content: center;
+  display: flex;
+}
+
+.add-task-modal-back-button {
+  padding: 10px;
+  width: 80%;
+  border: 1px solid #000;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.add-task-modal-add-input-button-wrap {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+
+.add-task-modal-add-input-button {
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.add-task-modal-add-input-img {
+  width: 2em;
+  height: 2em;
+}
+
+
+
+/* Navbar Style */
+
+.nav-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  max-height: 43px;
+}
+
+.nav-menu {
+  list-style: none;
+}
+
+.nav-item {
+  color: black;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.nav-menu > li {
+  color: aqua;
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.nav-active {
+  color: #000;
+  font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Media Queries */
+
+@media screen and (max-width: 724px) {
+  .add-task-modal-contents {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  width: 90%;
+  max-width: 1024px;
+  min-height: 250px;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  cursor: default;
+  border-radius: 8px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-top: 20px;
+}
 }
