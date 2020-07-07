@@ -1,26 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import uuid from 'uuid/v4';
-import addCircle from '../imgs/add-enc.png';
-import minusCircle from '../imgs/minus-enc.png';
 import addPlain from '../imgs/add-plain.png';
 import minusPlain from '../imgs/minus-plain.png';
 
 
 function NewTaskModal(props) {
 
+   let history = useHistory();
+
+   let newTaskInputRef = useRef(null);
+
    let [newTasks, setNewTasks] = useState([{ id: uuid(), taskName: "", status: "New" }]);
 
-   function addTask() {
+   function submitTask() {
       let pushThis = newTasks.filter((item) => item.taskName !== "");
-
       props.add(pushThis);
-
       setNewTasks([{ id: uuid(), taskName: "", status: "New" }]);
+      history.push("/")
    }
    
 
    function closeModal(e) {
-      if (e.target.classList.contains("add-task-modal")) props.toggle();
+      if (e.target.classList.contains("add-task-modal")) {
+         props.toggle();
+         setNewTasks([{ id: uuid(), taskName: "", status: "New" }]);
+      } 
    }
 
    function handleChange(e, index) {
@@ -32,6 +37,7 @@ function NewTaskModal(props) {
          return (
             <div key={item.id} >
                <input
+                  ref={newTaskInputRef}
                   type="text"
                   className="add-task-modal-input"
                   placeholder="Type your task here"
@@ -59,7 +65,15 @@ function NewTaskModal(props) {
    
    function handleDone() {
       props.toggle();
+      setNewTasks([{ id: uuid(), taskName: "", status: "New" }]);
    }
+
+
+   useEffect(() => {
+      if (newTaskInputRef && newTaskInputRef.current) {
+         newTaskInputRef.current.focus()
+      }
+   });
 
    function isVisible() {
       if (props.isVisible) {
@@ -78,11 +92,11 @@ function NewTaskModal(props) {
                            </div>
                         </div>
                         {showInputField()}
-                        <div className="add-task-modal-submit" onClick={addTask}>
-                           <p className="add-task-modal-submit-button">Submit</p>
+                        <div className="add-task-modal-submit" onClick={submitTask}>
+                           <p className="add-task-modal-submit-button btn">Submit</p>
                         </div>
                         <div className="add-task-modal-back" onClick={handleDone}>
-                           <p className="add-task-modal-back-button">Done</p>
+                           <p className="add-task-modal-back-button btn">Done</p>
                         </div>
                      </form>
                   </div>

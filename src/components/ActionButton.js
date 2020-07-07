@@ -1,7 +1,7 @@
 import React from 'react';
 import playBtn from '../imgs/play.png';
 import checkBtn from '../imgs/check.png';
-import undoBtn from '../imgs/wrong.png';
+import undoBtn from '../imgs/undo.png';
 import deleteBtn from '../imgs/garbage.png';
 
 

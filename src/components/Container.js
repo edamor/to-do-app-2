@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import Task from './Task';
 import uuid from 'uuid/v4';
@@ -11,6 +11,8 @@ function Container() {
    let { pathname } = useLocation();
 
    let [header, setHeader] = useState("All Tasks");
+   let [bgColor, setBgColor] = useState("container-task default");
+   let [titleShadow, setTitleShadow] = useState("h3 text-center title-shadow-default");
    
    let [tasks, setTasks] = useState([
       { id: uuid(), taskName: "Example Task 1", status: "New" },
@@ -122,42 +124,70 @@ function Container() {
       !newTaskModal ? setNewTaskModal(true) : setNewTaskModal(false)
    }
 
-   let showHeader = () => {
-         pathname === "/new" ? setHeader("New")
-      :  pathname === "/ongoing" ? setHeader("Ongoing")
-      :  pathname === "/finished" ? setHeader("Finished")
-      :  setHeader("All Tasks")
+   let handlePage = () => {
+      let p = pathname;
+      if (p === "/new") {
+         setHeader("New");
+         setBgColor("container-task red");
+         setTitleShadow("h3 text-center title-shadow-red");
+      } else if (p === "/ongoing") {
+         setHeader("Ongoing");
+         setBgColor("container-task yellow");
+         setTitleShadow("h3 text-center title-shadow-yellow");
+      } else if (p === "/finished") {
+         setHeader("Finished");
+         setBgColor("container-task blue");
+         setTitleShadow("h3 text-center title-shadow-blue");
+      } else {
+         setHeader("All Tasks");
+         setBgColor("container-task default");
+         setTitleShadow("h3 text-center title-shadow-default");
+      }
    }
 
-   useEffect(() => {
-      showHeader();
-   });
+   let containerRef = useRef(null);
+   let titleRef = useRef(null);
 
+   useEffect(() => {
+      handlePage();
+      if (containerRef && containerRef.current) {
+         console.log(containerRef.current.classList)
+         containerRef.current.className = bgColor;
+      }
+      if (titleRef && titleRef.current) {
+         titleRef.current.className = titleShadow;
+      }
+   });
+   
+
+   console.log(titleRef.current)
 
    return (
       <div className="container">
-         <p className="h3 text-center"> {header} </p>
+         <p className="" ref={titleRef}> {header} </p>
          <div className="add-button" >
-            <div className="add-button-wrap" onClick={showModal}>
+            <div className="add-button-wrap btn" onClick={showModal}>
                <span className="add-button-text">Add Task</span>
                <img src={addBtn} alt="add button" className="add-button-img" />
             </div>
-            <NewTaskModal isVisible={newTaskModal} toggle={showModal} add={addTask} />
+            <NewTaskModal isVisible={newTaskModal} toggle={showModal} add={addTask}  />
          </div>
-         <div className="header-container">
-            <div className="header-title text-center">
-               <p className="h6">
-                  Title
-               </p>
+         <div className="" ref={containerRef}>
+            <div className="header-container">
+               <div className="header-title text-center">
+                  <p className="h6">
+                     Title
+                  </p>
+               </div>
+               <div className="header-actions text-center"> 
+                  <p className="h6 header-action-text">
+                     Actions
+                  </p>
+               </div>
             </div>
-            <div className="header-actions text-center"> 
-               <p className="h6 header-action-text">
-                  Actions
-               </p>
+            <div className="" >
+               {showTasks}
             </div>
-         </div>
-         <div>
-            {showTasks}
          </div>
       </div>
    )

@@ -8,10 +8,41 @@
 
 
 body {
-  background-color: #f4f4f4;
+  background-color: #f7f7f7;
   font-family: 'Oswald', sans-serif;
   padding-bottom: 20px;
 }
+
+
+/* Background Color */
+.default {
+  background-color: rgb(255, 225, 191);
+}
+.red {
+  background-color: rgb(241, 181, 181);
+}
+.yellow {
+  background-color: rgb(249, 250, 175);
+}
+.blue {
+  background-color: rgb(67, 78, 179);
+  color: #fff;
+}
+
+.title-shadow-default {
+    text-shadow: 5px 5px 20px rgba(0,0,0,0.25), -5px -5px 20px rgba(0,0,0,0.24);
+}
+
+.title-shadow-red {
+    text-shadow: 5px 5px 20px rgb(247, 166, 166), -5px -5px 20px rgba(241, 181, 181);
+}
+.title-shadow-yellow {
+    text-shadow: 5px 5px 20px rgb(215, 218, 70), -5px -5px 20px rgb(236, 238, 125);
+}
+.title-shadow-blue {
+    text-shadow: 5px 5px 20px rgb(109, 118, 194), -5px -5px 20px rgb(98, 107, 189);
+}
+
 
 
 /* General Style */
@@ -20,6 +51,20 @@ body {
   width: 95%;
   max-width: 1024px;
   margin: 0 auto;
+}
+
+.container-shadow-header {
+  box-shadow: 0 -3px 16px 0 rgba(0,0,0,0.2), 0 -2px 20px 0 rgba(0,0,0,0.19);
+}
+
+.container-shadow {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.container-task {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 15px rgba(0,0,0,0.19);
+  border-radius: 10px;
+  border: 1px solid rgb(138, 138, 138);
 }
 
 .h6 {
@@ -83,6 +128,26 @@ body {
 }
 
 
+/* Button Style */
+.btn {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border-radius: 10px;
+  padding: 10px 15px;
+  letter-spacing: 0.1rem;
+  font-size: 1.5rem;
+  background-color: rgb(157, 228, 140);
+}
+
+.btn:active {
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 3px 5px 0 rgba(0,0,0,0.19);
+  border-radius: 10px;
+  padding: 10px 15px;
+  letter-spacing: 0.1rem;
+  font-size: 1.5rem;
+  color: rgb(82, 82, 82);
+}
+
+
 
 /* Container Style */
 
@@ -94,21 +159,17 @@ body {
 }
 
 .header-container {
-  border: 1px solid #000;
+  border-bottom: 1px solid rgb(138, 138, 138);
   height: 80px;
   display: flex;
   align-items: center;
 }
 
 .header-title {
-  /* background-color: red; */
-  /* background-color: rgb(162, 157, 229); */
   width: 70%;
 }
 
 .header-actions {
-  /* background-color: green; */
-  /* background-color: rgb(162, 157, 229); */
   width: 30%;
   display: inline-flex;
   align-items: center;
@@ -116,12 +177,15 @@ body {
 }
 
 .task-card-container {
-  /* background-color: rgb(162, 157, 229); */
   height: 80px;
   display: flex;
-  border-left: 1px solid #000;
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid rgb(138, 138, 138);
+}
+
+.task-card-container:last-child {
+  height: 80px;
+  display: flex;
+  border-bottom: none;
 }
 
 .task-title {
@@ -162,30 +226,28 @@ body {
 }
 
 .add-button-wrap {
-  border: 1px solid #000;
-  border-radius: 10px;
+  
   align-content: center;
   display: flex;
-  padding: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 35px;
+  cursor: pointer;
 }
 
 .add-button {
-  cursor: pointer;
   display: flex;
   width: 100%;
   justify-content: center;
 }
 
 .add-button-img {
-  width: 2em;
-  height: 2em;
+  width: 2rem;
+  height: 2rem;
   align-self: center;
 }
 
 .add-button-text {
-  font-size: 1.5em;
   margin-right: 5px;
+  /* font-size: 1.8rem; */
 }
 
 .header-action-text {
@@ -197,7 +259,7 @@ body {
 /* Add Task Modal */
 
 .add-task-modal {
-  background-color: rgba(0,0,0, 0.6);
+  background-color: rgba(0,0,0, 0.75);
   position: absolute;
   height: 100%;
   width: 100%;
@@ -205,10 +267,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  transition: .5s ease;
 }
 
+
+
 .add-task-modal-contents {
-  background-color: rgb(255, 255, 255);
+  background-color: #f0efeb;
   display: flex;
   width: 40%;
   max-width: 1024px;
@@ -251,8 +316,6 @@ body {
 .add-task-modal-submit-button {
   padding: 10px;
   width: 80%;
-  border: 1px solid #000;
-  border-radius: 7px;
   cursor: pointer;
 }
 
@@ -264,8 +327,6 @@ body {
 .add-task-modal-back-button {
   padding: 10px;
   width: 80%;
-  border: 1px solid #000;
-  border-radius: 7px;
   cursor: pointer;
   margin-bottom: 10px;
 }
