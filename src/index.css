@@ -133,8 +133,8 @@ body {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   border-radius: 10px;
   padding: 10px 15px;
-  letter-spacing: 0.1rem;
-  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  font-size: 1.5em;
   background-color: rgb(157, 228, 140);
 }
 
@@ -142,8 +142,8 @@ body {
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 3px 5px 0 rgba(0,0,0,0.19);
   border-radius: 10px;
   padding: 10px 15px;
-  letter-spacing: 0.1rem;
-  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  font-size: 1.5em;
   color: rgb(82, 82, 82);
 }
 
@@ -167,6 +167,10 @@ body {
 
 .header-title {
   width: 70%;
+  text-align: center;
+}
+
+.header-title-text {
 }
 
 .header-actions {
@@ -395,18 +399,34 @@ body {
 
 @media screen and (max-width: 724px) {
   .add-task-modal-contents {
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  width: 90%;
-  max-width: 1024px;
-  min-height: 250px;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  cursor: default;
-  border-radius: 8px;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  margin-top: 20px;
-}
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    width: 90%;
+    max-width: 1024px;
+    min-height: 250px;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    cursor: default;
+    border-radius: 8px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 20px;
+  }
+  .h6 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .header-title {
+    /* width: 65%; */
+    text-align: left;
+    margin-left: 0.5em;
+  }
+  .header-actions {
+    /* width: 35%; */
+    /* text-align: center; */
+  }
 }

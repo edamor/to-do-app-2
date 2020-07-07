@@ -174,8 +174,8 @@ function Container() {
          </div>
          <div className="" ref={containerRef}>
             <div className="header-container">
-               <div className="header-title text-center">
-                  <p className="h6">
+               <div className="header-title">
+                  <p className="h6 header-title-text">
                      Title
                   </p>
                </div>
