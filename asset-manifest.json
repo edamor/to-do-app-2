@@ -1,27 +1,29 @@
 {
   "files": {
-    "main.css": "/to-do-app-2/static/css/main.1d401594.chunk.css",
-    "main.js": "/to-do-app-2/static/js/main.c1a9421c.chunk.js",
-    "main.js.map": "/to-do-app-2/static/js/main.c1a9421c.chunk.js.map",
+    "main.css": "/to-do-app-2/static/css/main.4af988b4.chunk.css",
+    "main.js": "/to-do-app-2/static/js/main.03ac8ea0.chunk.js",
+    "main.js.map": "/to-do-app-2/static/js/main.03ac8ea0.chunk.js.map",
     "runtime-main.js": "/to-do-app-2/static/js/runtime-main.1729d156.js",
     "runtime-main.js.map": "/to-do-app-2/static/js/runtime-main.1729d156.js.map",
-    "static/js/2.4d7ebb66.chunk.js": "/to-do-app-2/static/js/2.4d7ebb66.chunk.js",
-    "static/js/2.4d7ebb66.chunk.js.map": "/to-do-app-2/static/js/2.4d7ebb66.chunk.js.map",
+    "static/js/2.9eb76780.chunk.js": "/to-do-app-2/static/js/2.9eb76780.chunk.js",
+    "static/js/2.9eb76780.chunk.js.map": "/to-do-app-2/static/js/2.9eb76780.chunk.js.map",
     "index.html": "/to-do-app-2/index.html",
-    "precache-manifest.deeddbac8206ea0c9afb6f811c4f9687.js": "/to-do-app-2/precache-manifest.deeddbac8206ea0c9afb6f811c4f9687.js",
+    "precache-manifest.7f803f8a0591c9a5c12ab1ccb7bb1a41.js": "/to-do-app-2/precache-manifest.7f803f8a0591c9a5c12ab1ccb7bb1a41.js",
     "service-worker.js": "/to-do-app-2/service-worker.js",
-    "static/css/main.1d401594.chunk.css.map": "/to-do-app-2/static/css/main.1d401594.chunk.css.map",
-    "static/js/2.4d7ebb66.chunk.js.LICENSE.txt": "/to-do-app-2/static/js/2.4d7ebb66.chunk.js.LICENSE.txt",
+    "static/css/main.4af988b4.chunk.css.map": "/to-do-app-2/static/css/main.4af988b4.chunk.css.map",
+    "static/js/2.9eb76780.chunk.js.LICENSE.txt": "/to-do-app-2/static/js/2.9eb76780.chunk.js.LICENSE.txt",
     "static/media/add.png": "/to-do-app-2/static/media/add.623d3aa3.png",
+    "static/media/cancel.png": "/to-do-app-2/static/media/cancel.a641a952.png",
     "static/media/check.png": "/to-do-app-2/static/media/check.d1826015.png",
+    "static/media/confirm.png": "/to-do-app-2/static/media/confirm.38dd1442.png",
     "static/media/garbage.png": "/to-do-app-2/static/media/garbage.2108b72f.png",
     "static/media/play.png": "/to-do-app-2/static/media/play.bf604bf3.png",
     "static/media/undo.png": "/to-do-app-2/static/media/undo.2148f380.png"
   },
   "entrypoints": [
     "static/js/runtime-main.1729d156.js",
-    "static/js/2.4d7ebb66.chunk.js",
-    "static/css/main.1d401594.chunk.css",
-    "static/js/main.c1a9421c.chunk.js"
+    "static/js/2.9eb76780.chunk.js",
+    "static/css/main.4af988b4.chunk.css",
+    "static/js/main.03ac8ea0.chunk.js"
   ]
 }
