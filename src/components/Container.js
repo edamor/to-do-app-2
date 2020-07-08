@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 import Task from './Task';
 import uuid from 'uuid/v4';
 import addBtn from '../imgs/add.png';
-import NewTaskModal from '../components/NewTaskModal';
 
 
 function Container() {
@@ -11,19 +10,45 @@ function Container() {
    let { pathname } = useLocation();
 
    let [header, setHeader] = useState("All Tasks");
-   let [bgColor, setBgColor] = useState("container-task default");
-   let [titleShadow, setTitleShadow] = useState("h3 text-center title-shadow-default");
    
+
    let [tasks, setTasks] = useState([
-      { id: uuid(), taskName: "Example Task 1", status: "New" },
-      { id: uuid(), taskName: "Example Task 2", status: "Ongoing" },
-      { id: uuid(), taskName: "Example Task 3", status: "Finished" }
+      { id: uuid(), taskName: "Example Task 1", status: "New", onEdit: false },
+      { id: uuid(), taskName: "Example Task 2", status: "Ongoing", onEdit: false },
+      { id: uuid(), taskName: "Example Task 3", status: "Finished", onEdit: false }
    ]);
 
-   let [newTaskModal, setNewTaskModal] = useState(false);
 
-   let addTask = (newTasks) => {
-      setTasks([...newTasks, ...tasks])
+   let addTask = () => {
+      window.scrollTo({top: 0, left: 0, behavior: "smooth"});
+      let newTask = { id: uuid(), taskName: "", status: "New", onEdit: true};
+      setTasks([newTask, ...tasks])
+   }
+
+   let editTask = (taskID, newName) => {
+      let editedTask = tasks.map((item) => {
+         if (taskID === item.id) {
+            item.taskName = newName;
+            return item;
+         } return item;
+      })
+      setTasks(editedTask);
+   }
+
+   let editInputToggle = (taskID) => {
+      let showInput = tasks.map((item) => {
+         if (taskID === item.id) {
+            if (!item.onEdit) {
+               item.onEdit = true;
+               return item;
+            } else {
+               item.onEdit = false;
+               return item;
+            }
+         }
+         return item;
+      })
+      setTasks(showInput);
    }
 
    let doTask = (taskID) => {
@@ -66,82 +91,79 @@ function Container() {
       setTasks(deletedTask);
    };
 
-   let showTasks = tasks.map((item) => {
-      if (item.status !== "Deleted") {
-         if (pathname === "/new") {
-            if (item.status === "New") {
-               return (
-                  <Task
-                     key={item.id} 
-                     task={item}
-                     start={doTask}
-                     finish={finishTask}
-                     undo={undoTask}
-                     delete={deleteTask}
-                  />
-               )
-            }
-         } else if (pathname === "/ongoing") {
-            if (item.status === "Ongoing") {
-               return (
-                  <Task
-                     key={item.id}
-                     task={item}
-                     start={doTask}
-                     finish={finishTask}
-                     undo={undoTask}
-                     delete={deleteTask}
-                  />
-               )
-            }
-         } else if (pathname === "/finished") {
-            if (item.status === "Finished") {
-               return (
-                  <Task
-                     key={item.id}
-                     task={item}
-                     start={doTask}
-                     finish={finishTask}
-                     undo={undoTask}
-                     delete={deleteTask}
-                  />
-               )
-            }
-         } else return (
-            <Task
-               key={item.id}
-               task={item}
-               start={doTask}
-               finish={finishTask}
-               undo={undoTask}
-               delete={deleteTask}
-            />
-         )
-      }
-   })
 
-   let showModal = () => {
-      !newTaskModal ? setNewTaskModal(true) : setNewTaskModal(false)
+   function showTasks() { 
+      if (pathname === "/new") {
+         return tasks.filter(item => item.status === "New").map((item) => {
+            return (
+               <Task
+                  key={item.id}
+                  task={item}
+                  start={doTask}
+                  finish={finishTask}
+                  undo={undoTask}
+                  delete={deleteTask}
+                  edit={editTask}
+                  toggleInput={editInputToggle}
+               />
+            )
+         });
+      } else if (pathname === "/ongoing") {
+         return tasks.filter(item => item.status === "Ongoing").map((item) => {
+            return (
+               <Task
+                  key={item.id}
+                  task={item}
+                  start={doTask}
+                  finish={finishTask}
+                  undo={undoTask}
+                  delete={deleteTask}
+                  edit={editTask}
+                  toggleInput={editInputToggle}
+               />
+            )
+         });
+      } else if (pathname === "/finished") {
+         return tasks.filter(item => item.status === "Finished").map((item) => {
+            return (
+               <Task
+                  key={item.id}
+                  task={item}
+                  start={doTask}
+                  finish={finishTask}
+                  undo={undoTask}
+                  delete={deleteTask}
+                  edit={editTask}
+                  toggleInput={editInputToggle}
+               />
+            )
+         });
+      } else return tasks.filter(item => item.status !== "Deleted").map((item) => {
+               return (
+                  <Task
+                     key={item.id}
+                     task={item}
+                     start={doTask}
+                     finish={finishTask}
+                     undo={undoTask}
+                     delete={deleteTask}
+                     edit={editTask}
+                     toggleInput={editInputToggle}
+                  />
+               )
+            });
    }
 
    let handlePage = () => {
       let p = pathname;
       if (p === "/new") {
          setHeader("New");
-         setBgColor("container-task red");
-         setTitleShadow("h3 text-center title-shadow-red");
       } else if (p === "/ongoing") {
          setHeader("Ongoing");
-         setBgColor("container-task yellow");
-         setTitleShadow("h3 text-center title-shadow-yellow");
       } else if (p === "/finished") {
          setHeader("Finished");
-         setBgColor("container-task blue");
-         setTitleShadow("h3 text-center title-shadow-blue");
       } else {
          setHeader("All Tasks");
-         setBgColor("container-task default");
-         setTitleShadow("h3 text-center title-shadow-default");
       }
    }
 
@@ -150,29 +172,17 @@ function Container() {
 
    useEffect(() => {
       handlePage();
-      if (containerRef && containerRef.current) {
-         console.log(containerRef.current.classList)
-         containerRef.current.className = bgColor;
-      }
-      if (titleRef && titleRef.current) {
-         titleRef.current.className = titleShadow;
-      }
    });
    
 
-   console.log(titleRef.current)
 
    return (
       <div className="container">
-         <p className="" ref={titleRef}> {header} </p>
+         <p className="h4 text-center" ref={titleRef}> {header} </p>
          <div className="add-button" >
-            <div className="add-button-wrap btn" onClick={showModal}>
-               <span className="add-button-text">Add Task</span>
-               <img src={addBtn} alt="add button" className="add-button-img" />
-            </div>
-            <NewTaskModal isVisible={newTaskModal} toggle={showModal} add={addTask}  />
+            <img src={addBtn} alt="add button" className="add-button-img" onClick={addTask} />
          </div>
-         <div className="" ref={containerRef}>
+         <div className="container-task default" ref={containerRef}>
             <div className="header-container">
                <div className="header-title">
                   <p className="h6 header-title-text">
@@ -186,7 +196,7 @@ function Container() {
                </div>
             </div>
             <div className="" >
-               {showTasks}
+               {showTasks()}
             </div>
          </div>
       </div>

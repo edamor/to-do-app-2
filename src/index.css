@@ -6,6 +6,9 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background-color: #f7f7f7;
@@ -170,8 +173,7 @@ body {
   text-align: center;
 }
 
-.header-title-text {
-}
+
 
 .header-actions {
   width: 30%;
@@ -193,12 +195,21 @@ body {
 }
 
 .task-title {
+  display: flex;
   width: 70%;
   height: auto;
   align-self: center;
+  cursor: pointer;
 }
 
 .task-title-text {
+  font-size: 1.2em;
+}
+
+.task-title-input {
+  width: 80%;
+  height: 40px;
+  font-family: 'Oswald', sans-serif;
   font-size: 1.2em;
 }
 
@@ -229,35 +240,56 @@ body {
   cursor: pointer;
 }
 
-.add-button-wrap {
-  
-  align-content: center;
-  display: flex;
-  margin-bottom: 35px;
-  cursor: pointer;
-}
+
 
 .add-button {
+  position: fixed;
+  bottom: 12%;
+  right: 10%;
+  background-color: rgb(243, 147, 36);
   display: flex;
-  width: 100%;
-  justify-content: center;
+  padding: 0.7em;
+  border-radius: 50%;
+  box-shadow: 4px 4px 10px 0 rgba(0,0,0,0.45);
+}
+
+.add-button:active {
+  box-shadow: 1px 1px 10px 0 rgba(0,0,0,0.45);
+  background-color: rgb(241, 158, 48);
+  transform: translate(1px,1px);
 }
 
 .add-button-img {
+  cursor: pointer;
   width: 2rem;
   height: 2rem;
   align-self: center;
 }
 
-.add-button-text {
-  margin-right: 5px;
-  /* font-size: 1.8rem; */
-}
 
 .header-action-text {
   display: inline-block;
-  
 }
+
+
+
+
+/* Edit Task Name Buttons */
+.edit-button-wrap {
+  width: 15%;
+  display: inline-flex;
+  align-self: center;
+  justify-content: space-evenly;
+}
+
+.edit-button-img {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+
+
 
 
 /* Add Task Modal */
@@ -425,8 +457,23 @@ body {
     text-align: left;
     margin-left: 0.5em;
   }
-  .header-actions {
-    /* width: 35%; */
-    /* text-align: center; */
+  .task-title-text {
+    font-size: 1em;
+  }
+  .task-title-input {
+    width: 80%;
+    height: 40px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1em;
+  }
+  .edit-button-wrap {
+    width: 20%;
+    display: inline-flex;
+    align-self: center;
+    justify-content: space-evenly;
+  }
+  .edit-button-img {
+    height: 1.3em;
+    width: 1.3em;
   }
 }
