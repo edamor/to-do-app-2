@@ -32,7 +32,7 @@ function Task(props) {
    let showTaskTitle = () => {
       if (!props.task.onEdit) {
          return (
-            <div className="task-title" onDoubleClick={toggle} onTouchStart={toggle} >
+            <div className="task-title" onDoubleClick={toggle} onTouchEnd={toggle} >
                <p className="task-title-text" > {props.task.taskName} </p>
             </div>
          )

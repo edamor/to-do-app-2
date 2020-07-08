@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  background-color: #fff;
+  background-color: #e5e5e5;
   font-family: 'Roboto', sans-serif;
   padding-bottom: 20px;
   color: #000;
@@ -20,7 +20,7 @@ body {
 
 /* Background Color */
 .default {
-  background-color: #e5e5e5;
+  background-color: #fff;
 }
 .red {
   background-color: rgb(241, 181, 181);
@@ -411,7 +411,7 @@ body {
 }
 
 .nav-item {
-  color: black;
+  color: #14213d;
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
   font-size: 1.2em;
@@ -420,7 +420,6 @@ body {
 }
 
 .nav-menu > li {
-  color: aqua;
   display: inline-block;
   margin-right: 10px;
   margin-left: 10px;
@@ -495,5 +494,16 @@ body {
   .add-button {
     right: 5%;
     top: 13%;
+  }
+  .nav-item {
+    color: #14213d;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+    padding: 0px 5px;
+  }
+  .nav-active {
+    color: #fff;
+    background-color: #14213d;
   }
 }
