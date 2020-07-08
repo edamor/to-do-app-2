@@ -9,13 +9,11 @@ function Container() {
 
    let { pathname } = useLocation();
 
-   let [header, setHeader] = useState("All Tasks");
+   let [header, setHeader] = useState("My Tasks");
    
 
    let [tasks, setTasks] = useState([
-      { id: uuid(), taskName: "Example Task 1", status: "New", onEdit: false },
-      { id: uuid(), taskName: "Example Task 2", status: "Ongoing", onEdit: false },
-      { id: uuid(), taskName: "Example Task 3", status: "Finished", onEdit: false }
+      { id: uuid(), taskName: "Double-click or tap here to edit", status: "New", onEdit: false }
    ]);
 
 
@@ -163,7 +161,7 @@ function Container() {
       } else if (p === "/finished") {
          setHeader("Finished");
       } else {
-         setHeader("All Tasks");
+         setHeader("My Tasks");
       }
    }
 
@@ -182,7 +180,7 @@ function Container() {
          <div className="add-button" >
             <img src={addBtn} alt="add button" className="add-button-img" onClick={addTask} />
          </div>
-         <div className="container-task default" ref={containerRef}>
+         <div className=" default" ref={containerRef}>
             <div className="header-container">
                <div className="header-title">
                   <p className="h6 header-title-text">

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import ActionButton from './ActionButton';
 import confirmBtn from '../imgs/confirm.png';
 import cancelBtn from '../imgs/cancel.png';
@@ -43,7 +43,8 @@ function Task(props) {
                className="task-title-input" 
                ref={inputRef} 
                onChange={handleChange} 
-               value={newTaskName} 
+               value={newTaskName}
+               placeholder="Type task here..." 
                autoFocus 
             />
             <div className="edit-button-wrap">
