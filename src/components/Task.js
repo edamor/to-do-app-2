@@ -14,9 +14,7 @@ function Task(props) {
 
    let [newTaskName, setNewTaskName] = useState(props.task.taskName);
    let handleChange = (e) => {
-      if (e.target.value.trim() !== "") {
-         setNewTaskName(e.target.value.trim())
-      }
+      setNewTaskName(e.target.value)
    }
    
    let handleCancel = () => {
